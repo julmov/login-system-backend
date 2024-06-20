@@ -7,7 +7,7 @@ export const register = async (req, res) => {
 
   if (!email || !password || !username)
     return res.status(400).send({ error: "Invalid request" });
-
+  console.log("Request body:", req.body); // Add this line
   try {
     const encryptedPassword = await bcrypt.hash(password, 10);
 

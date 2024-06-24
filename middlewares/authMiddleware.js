@@ -9,9 +9,11 @@ const authMiddleware = async (req, res, next) => {
       process.env.JWT_SECRET
     );
 
+    // If the token is valid, attach the decoded user information to the request object
+    
     if (decoded) {
       req.user = decoded;
-      return next();
+      return next(); // Call the next middleware or route handler
     }
   } catch (err) {
     console.log(err);

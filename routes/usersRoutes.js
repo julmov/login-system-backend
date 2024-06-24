@@ -4,7 +4,7 @@ import authMiddleware from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-// GET all users from users_greentripper table
+// GET all users from table
 router.get("/", authMiddleware, async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM users_greentripper");

@@ -1,7 +1,4 @@
 import express from "express";
-import pg from "pg";
-import bcrypt from "bcrypt";
-import JWT from "jsonwebtoken";
 import dotenv from "dotenv";
 import cors from "cors";
 import pool from "./config/database.js";
@@ -11,20 +8,15 @@ import usersRoutes from "./routes/usersRoutes.js";
 
 const app = express();
 
-app.use(cors());
+app.use(cors());  // Enable CORS for all routes
 
-dotenv.config();
+dotenv.config(); // Load environment variables from .env file
 
-app.use(express.json());
+app.use(express.json()); // Middleware to parse incoming JSON requests
 
 
 app.get("/", async (req, res) => {
   res.send("hhelloo from online");
-});
-
-app.get("/test", async (req, res) => {
-  const q = await pool.query("SELECT * from users");
-  res.send(q);
 });
 
 app.use("/api/auth", authRoutes);
